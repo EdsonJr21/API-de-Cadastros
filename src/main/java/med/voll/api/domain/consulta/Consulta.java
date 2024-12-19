@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.domain.medico.Medico;
 import med.voll.api.domain.paciente.Paciente;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
@@ -33,4 +32,11 @@ public class Consulta {
 
     private LocalDateTime data;
 
+    @Column(name = "motivo_cancelamento")
+    @Enumerated(EnumType.STRING)
+    private MotivoDoCancelamento motivoDoCancelamento;
+
+    public void cancelar(MotivoDoCancelamento motivo) {
+        this.motivoDoCancelamento = motivo;
+    }
 }

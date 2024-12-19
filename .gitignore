@@ -1,10 +1,10 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Arquivos de Configuração Sensíveis
+.env
 
-### STS ###
+# Diretórios de Build (Maven, IntelliJ, NetBeans, etc.)
+target/
+
+# STS
 .apt_generated
 .classpath
 .factorypath
@@ -13,21 +13,27 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
+# IntelliJ IDEA
 .idea
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
+# NetBeans
 /nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
+# VS Code
 .vscode/
+
+# Logs de aplicação
+logs/
+*.log
+
+# Arquivos de banco de dados
+*.db
+*.bak

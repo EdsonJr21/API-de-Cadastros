@@ -21,26 +21,28 @@ public class TokenService {
     public String gerarToken(Usuario usuario) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
-            return JWT.create()
+            String token = JWT.create()
                     .withIssuer("API Voll.med")
                     .withSubject(usuario.getLogin())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
-        } catch (JWTCreationException exception){
-            throw new RuntimeException("erro ao gerar token jwt", exception);
+            System.out.println("Token gerado: " + token);  // Log para depuração
+            return token;
+        } catch (JWTCreationException exception) {
+            throw new RuntimeException("Erro ao gerar token JWT", exception);
         }
     }
 
     public String getSubject(String tokenJWT) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
-            return JWT.require(algoritmo)
-                    .withIssuer("API Voll.med")
-                    .build()
-                    .verify(tokenJWT)
-                    .getSubject();
+            var verifier = JWT.require(algoritmo).withIssuer("API Voll.med").build();
+            var subject = verifier.verify(tokenJWT).getSubject();
+            System.out.println("Subject extraído do token: " + subject);
+            return subject;
         } catch (JWTVerificationException exception) {
-            throw new RuntimeException("Token JWT inválido ou expirado!");
+            System.err.println("Erro ao verificar token: " + exception.getMessage());
+            throw new RuntimeException("Token JWT inválido ou expirado!", exception);
         }
     }
 

@@ -57,4 +57,8 @@ public class Medico {
     public void excluir() {
         this.ativo = false;
     }
+
+    public boolean isAtivo() {
+        return ativo != null && ativo;
+    }
 }
