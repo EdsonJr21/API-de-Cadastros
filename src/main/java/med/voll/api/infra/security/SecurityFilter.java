@@ -31,7 +31,6 @@ public class SecurityFilter extends OncePerRequestFilter {
             var usuario = repository.findByLogin(subject);
 
             if (usuario.isPresent()) {
-                // Use o objeto usuario diretamente
                 var authentication = new UsernamePasswordAuthenticationToken(usuario.get(), null, usuario.get().getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
