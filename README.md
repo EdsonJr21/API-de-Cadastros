@@ -1,5 +1,4 @@
 # API de Cadastro de Médicos
-**Status do Projeto**: Em desenvolvimento 🚧
 
 Este projeto é uma API construída com Spring Boot para gerenciar o cadastro de médicos e pacientes, incluindo dados pessoais como endereço e especialidade médica. A API conta com mecanismos de autenticação, controle de acesso e boas práticas de desenvolvimento, garantindo segurança e eficiência.
 
